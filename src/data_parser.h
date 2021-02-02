@@ -52,9 +52,13 @@ namespace data_parser {
 		// Result of the function
 		vector<Bar> result;
 
+		// Bar: collection of option price data(open, high, low, close) over the interval of 1 minute
 		Bar bar;
+
+		// Keep a track of the starting point of the interval
 		Time interval_start{0, 0, 0};
-		while(getline(infile, str)) {
+
+		while (getline(infile, str)) {
 			// Initialize a stringstream
 			stringstream ss(str);
 			
@@ -63,9 +67,9 @@ namespace data_parser {
 			ss >> price;
 
 			// If they don't cover the same interval
-			if(!data_parser::cover_same_interval(interval_start, t)) {
+			if (!data_parser::cover_same_interval(interval_start, t)) {
 				
-				// Push the previous bar into the result
+				// Push the previous bar into the result if it is not the first interval
 				if(interval_start.hour != 0)
 					result.push_back(bar);
 

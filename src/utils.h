@@ -4,16 +4,20 @@
 
 using namespace std;
 
-
+// Constants used in the script
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
 namespace constants {
-	constexpr int fast_ma_period = 21;
+	// Fast moving average length: 21 days
+	constexpr int fast_ma_period = 21;	
+	// Slow moving average length: 55 days
 	constexpr int slow_ma_period = 55;
 
-	constexpr bool verbose = false;
+	// Decimal places for writing prices
 	constexpr int default_dp = 2;
+
+	// Decimal places for writing moving averages
 	constexpr int ma_dp = 4;
 }
 
@@ -29,20 +33,20 @@ struct Time
 	double sec = 0;
 
 	friend istream &operator>>( istream &input, Time &right ) { //input in hh:mm format
-        input >> right.hour; // input hours
-        input.ignore(); // skip :
-        input >> right.min; // input minute part
-        input.ignore();	// skip :
-        input >> right.sec;
-        return input;
+		input >> right.hour; 	// input hours
+		input.ignore(); 		// skip :
+		input >> right.min; 	// input minute part
+		input.ignore();			// skip :
+		input >> right.sec;
+		return input;
 	}
 
 	friend ostream &operator<<( ostream &output, Time &right ) {
+		// Set a width of 2 digits, and fills the empty space with a zero
 		output << setfill('0') << setw(2) << right.hour<<":";
 		output << setfill('0') << setw(2) << right.min;
 		return output; 
 	}
-	
 };
 
 
@@ -73,21 +77,15 @@ struct Bar
 	double low_price = 0;
 
 	friend ostream &operator<<( ostream &output, Bar &bar ) {
+		// Fix the decimal places of the output
 		output << fixed << std::setprecision(constants::default_dp);
-		
-		if(constants::verbose) {
-			output << "Start: " << bar.interval << ", ";
-			output << "Open: " << bar.open_price << ", ";
-			output << "Close: " << bar.close_price << ", ";
-			output << "High: " << bar.high_price << ", ";
-			output << "Low: " << bar.low_price;			
-		} else {
-			output << bar.interval << ",";
-			output << bar.open_price << ",";
-			output << bar.close_price << ",";
-			output << bar.high_price << ",";
-			output << bar.low_price;
-		}
+
+		output << bar.interval << ",";
+		output << bar.open_price << ",";
+		output << bar.close_price << ",";
+		output << bar.high_price << ",";
+		output << bar.low_price;
+
 		return output; 
 	}
 };
@@ -112,8 +110,12 @@ struct TradingSignal
 	string buy_sell;
 
 	friend ostream&operator<<( ostream &output, TradingSignal &signal) {
+		// Output the bar using the overloaded operator
 		output << signal.bar << ",";
+		
+		// Set number of decimal places
 		output << fixed << std::setprecision(constants::ma_dp);
+		
 		output << signal.fast_sma << ",";
 		output << signal.slow_sma << ",";
 		output << signal.buy_sell;
@@ -121,4 +123,5 @@ struct TradingSignal
 		return output;
 	}
 };
+
 #endif
