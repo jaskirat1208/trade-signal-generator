@@ -4,7 +4,7 @@ all:
 
 generate_data:
 	mkdir -p ./data
-	python3 market_data_generator.py --file_path ./data/output.txt
+	python3 market_data_generator.py --file_path ./data/input.txt
 
 clean: 
 	rm -rf bin
