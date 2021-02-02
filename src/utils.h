@@ -115,7 +115,7 @@ struct TradingSignal
 		
 		// Set number of decimal places
 		output << fixed << std::setprecision(constants::ma_dp);
-		
+
 		output << signal.fast_sma << ",";
 		output << signal.slow_sma << ",";
 		output << signal.buy_sell;

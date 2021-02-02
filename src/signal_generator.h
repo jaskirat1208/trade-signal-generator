@@ -1,6 +1,6 @@
 #include "utils.h"
 
-#include <iostream>
+#include <fstream>
 
 #ifndef SIGNAL_GENERATOR_H
 #define SIGNAL_GENERATOR_H 
@@ -94,8 +94,25 @@ namespace signal_generator {
 			// Push it into the result
 			result.push_back(signal);
 		}
-		
+
 		return result;
+	}
+
+	/**
+	 * @brief      Write signals to the file 
+	 *
+	 * @param[in]  file_name  The file name
+	 * @param[in]  signals    The signals
+	 */
+	void write_to_file(string file_addr, vector<TradingSignal> signals) {
+		ofstream outfile(file_addr);
+
+		for (int i = 0; i < signals.size(); ++i)
+		{
+			outfile << signals[i] << endl;
+		}
+		
+		outfile.close();
 	}
 }
 
