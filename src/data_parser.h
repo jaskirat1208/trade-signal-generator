@@ -12,7 +12,7 @@ using namespace std;
 #define DATAPARSER_H
 
 /**
- * Contains all functions that required for parsing the input timestamps and stock prices
+ * @brief Contains all functions that required for parsing the input timestamps and stock prices
  */
 namespace data_parser {
 	

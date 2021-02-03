@@ -9,7 +9,7 @@ using namespace std;
 #define CONSTANTS_H
 
 /**
- * Constants used for the project
+ * @brief Constants used for the project
  */
 namespace constants {
 	// Fast moving average length: 21 days
