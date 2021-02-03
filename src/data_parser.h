@@ -11,10 +11,13 @@ using namespace std;
 #ifndef DATAPARSER_H
 #define DATAPARSER_H
 
+/**
+ * Contains all functions that required for parsing the input timestamps and stock prices
+ */
 namespace data_parser {
 	
 	/**
-	 * @brief      Checks if the two Time objects are a part of the same interval
+	 * @brief      A helper function to the function \ref parse_from_file. Checks if the two Time objects are a part of the same interval
 	 *
 	 * @param[in]  interval_start  The interval start
 	 * @param[in]  curr            The curr interval
@@ -30,7 +33,8 @@ namespace data_parser {
 	}
 	
 	/**
-	 * @brief      Read the file to get the timestamps and prices
+	 * @brief      Read the file to get the timestamps and prices.
+	 * 
 	 * Why vector instead of vector*: Refer the following FAQ: http://www.cplusplus.com/forum/general/56177/
 	 * 
 	 * @param[in]  file_addr  The file address

@@ -5,6 +5,10 @@
 #ifndef SIGNAL_GENERATOR_H
 #define SIGNAL_GENERATOR_H 
 
+/**
+ * Contains functions required to parse the \ref Bar vector and create \ref TradingSignal objects, 
+ * and output them into a file
+ */
 namespace signal_generator {
 	
 	/**
