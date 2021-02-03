@@ -9,3 +9,6 @@ generate_data:
 clean: 
 	rm -rf bin
 	rm -rf data
+build_doc:
+	mkdir -p bin
+	doxygen docs/trade-signal-generator
