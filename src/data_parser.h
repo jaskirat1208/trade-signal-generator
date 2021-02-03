@@ -56,7 +56,7 @@ namespace data_parser {
 		Bar bar;
 
 		// Keep a track of the starting point of the interval
-		Time interval_start{0, 0, 0};
+		Time interval_start{-1, -1, -1};
 
 		while (getline(infile, str)) {
 			// Initialize a stringstream
