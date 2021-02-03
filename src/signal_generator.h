@@ -105,8 +105,8 @@ namespace signal_generator {
 	/**
 	 * @brief      Write signals to the file 
 	 *
-	 * @param[in]  file_name  The file name
-	 * @param[in]  signals    The signals
+	 * @param[in]  file_name  Name of the output file
+	 * @param[in]  signals    Vector of \ref TradingSignals
 	 */
 	void write_to_file(string file_addr, vector<TradingSignal> signals) {
 		ofstream outfile(file_addr);

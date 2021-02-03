@@ -8,9 +8,13 @@ using namespace std;
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+/**
+ * Constants used for the project
+ */
 namespace constants {
 	// Fast moving average length: 21 days
 	constexpr int fast_ma_period = 21;	
+
 	// Slow moving average length: 55 days
 	constexpr int slow_ma_period = 55;
 
@@ -26,6 +30,9 @@ namespace constants {
 #ifndef TIME_H
 #define TIME_H
 
+/**
+ * @brief      A way of storing timestamps 
+ */
 struct Time
 {
 	int hour = 0;
@@ -57,7 +64,11 @@ struct Time
 #define BAR_H
 
 /**
- * @brief      A structure used to denote information for an interval
+ * @brief      Measure of the following quantities for a time interval. For this case, the length of the time interval is 1 minute, starting from 9:00 am 
+ * - Open price: Price at the start of the interval
+ * - Close price: Price at the end of the interval
+ * - Max price: Maximum stock price in the interval
+ * - Min price: Lowest stock price in the interval
  */
 struct Bar
 {
@@ -95,6 +106,11 @@ struct Bar
 #ifndef TRADING_SIGNAL_H
 #define TRADING_SIGNAL_H
 
+/**
+ * @brief      For each bar, this displays fast and slow moving averages, also displays a buy/sell signal in case of a crossover.
+ * - Fast simple moving average: The moving average corresponding to last 21 bars
+ * - Slow simple moving average: Moving average corresponding to last 55 intervals
+ */
 struct TradingSignal
 {
 	// Bar corresponding to the interval specific information
