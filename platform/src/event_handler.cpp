@@ -1,10 +1,8 @@
 #include "platform/event_handler.h"
 
-namespace jas
-{
+namespace jas {
 
-namespace platform
-{
+namespace platform {
 
 EventHandler::EventHandler() {}
 
@@ -24,12 +22,11 @@ void EventHandler::unregisterSubscriber(subscription_id_t) {}
  * @param event 
  */
 void EventHandler::publish(EVENT_TYPE event_type, FeedEventInfo feed_event_info) {
-    for(auto event: m_callbacks) {
+    for(auto& event: m_callbacks) {
         event->handleEvent(feed_event_info);
     }
 }
 
 
 } // namespace platform
-
 } // namespace jas

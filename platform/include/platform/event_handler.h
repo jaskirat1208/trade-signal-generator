@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -15,7 +17,7 @@ public:
     virtual void handleEvent(FeedEventInfo) = 0;
 };
 
-using EventCallbacks = std::vector<std::shared_ptr<FeedEventCallback>>; 
+using EventCallbacks = std::vector<std::shared_ptr<FeedEventCallback>>;
 
 class EventHandler {
 private:

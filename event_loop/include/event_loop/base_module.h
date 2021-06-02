@@ -7,7 +7,7 @@ class BaseModule
 public:
     void start() {}
     inline void update() {}
-    inline bool canTerminate() {}
+    inline bool canTerminate() { return true;}
     inline void stop() {}
 };
 

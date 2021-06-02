@@ -1,6 +1,8 @@
+#pragma once
+
 #include "event_loop/base_module.h"
 #include "platform/event_handler.h"
-#include "platform/feed_publisher.h"
+#include "platform/file_feed_getter.h"
 
 
 namespace jas {
@@ -11,7 +13,7 @@ class EventModule : public loop::BaseModule
 {
 private:
     EventHandler m_handler;
-    FeedPublisher feed_publisher;
+    FileFeedGetter feed_getter;
 public:
     void publishFeedEvent(EVENT_TYPE event_type, FeedEventInfo info) {
         m_handler.publish(event_type, info);
@@ -26,8 +28,15 @@ public:
         m_handler.unregisterSubscriber(subscription_id);
     }
 
-    EventModule();
-    ~EventModule();
+    void update() {
+        publishFeedEvent(EVENT_TYPE::FEED, feed_getter.parseFeedEventInfo());
+    }
+
+    bool canTerminate() {
+        return !feed_getter.getFeedString();
+    }
+
+    EventModule() : feed_getter("./data/feed.txt") {}
 };
 
 } // namespace platform

@@ -1,12 +1,12 @@
+#pragma once
+
 #include <cstdint>
 #include <iostream>
 #include <iomanip>
 
-namespace jas
-{
+namespace jas {
 
-namespace platform
-{
+namespace platform {
 
 using price_t = double;
 using subscription_id_t = uint32_t;
