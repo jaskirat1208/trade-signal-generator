@@ -14,7 +14,7 @@ namespace platform {
 
 class FeedEventCallback {
 public:
-    virtual void handleEvent(FeedEventInfo) = 0;
+    virtual void handleEvent(const FeedEventInfo&) = 0;
 };
 
 using EventCallbacks = std::vector<std::shared_ptr<FeedEventCallback>>;
