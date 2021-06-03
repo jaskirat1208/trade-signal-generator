@@ -7,4 +7,4 @@ project(trading-platform)
 # add the executable
 add_subdirectory(event_loop)
 add_subdirectory(platform)
-# add_subdirectory(strategy)
+add_subdirectory(strategy)

@@ -1,8 +1,6 @@
 #pragma once
-namespace jas
-{
-namespace loop
-{
+namespace jas {
+namespace loop {
 
 template<class Module>
 class EventLoop : public Module
@@ -13,7 +11,7 @@ public:
 };
 
 template<class Module>
-EventLoop<Module>::EventLoop() {}
+EventLoop<Module>::EventLoop() : Module() {}
 
 /**
  * @brief Loop update function. Depends on the module this is being called

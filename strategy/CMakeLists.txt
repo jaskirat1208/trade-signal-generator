@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.15)
+
+include_directories(platform INTERFACE include/)
+add_library(strategy src/sma_strategy.cpp)
+
+target_link_libraries(strategy platform eventloop)
+
+add_subdirectory(test)
