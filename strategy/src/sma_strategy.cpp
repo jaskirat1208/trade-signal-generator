@@ -41,15 +41,44 @@ bool SMAStrategy::cover_same_interval(const jas::platform::Time& interval_start,
     return false;
 }
 
+/**
+ * @brief 
+ * 
+ * @param bar 
+ */
 void SMAStrategy::handleBar(const jas::strategy::Bar& bar) {
-    
+    m_slow_sma_queue.update(bar);
+    m_fast_sma_queue.update(bar);
+
+
+    bool curr_state = m_slow_sma_queue.getSMA() < m_fast_sma_queue.getSMA();
+
+    if(m_slow_sma_queue.getSMA() && m_fast_sma_queue.getSMA()) {
+        if(m_start_signals && (m_prev_state ^ curr_state)) {
+            if(curr_state) {
+                std::cout << const_cast<strategy::Bar&>(bar) << ", BUY" << std::endl;
+            } else {
+                std::cout << const_cast<strategy::Bar&>(bar) << ", SELL" << std::endl;
+            }
+        }
+        m_start_signals = true;
+    }
+    m_prev_state = curr_state;
 }
 
-SMAStrategy::SMAStrategy() : m_interval_start{0, 0, 0} {
+/**
+ * @brief Construct a new SMAStrategy::SMAStrategy object
+ * 
+ */
+SMAStrategy::SMAStrategy() : 
+    m_interval_start{0, 0, 0},
+    m_slow_sma_queue(constants::slow_ma_period),
+    m_fast_sma_queue(constants::fast_ma_period),
+    m_prev_state(false),
+    m_start_signals(false) {
 }
 
-SMAStrategy::~SMAStrategy() {
-}
+SMAStrategy::~SMAStrategy() {}
 
 } // namespace platform
 } // namespace jas
