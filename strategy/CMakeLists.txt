@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.12.0)
 
 include_directories(platform INTERFACE include/)
 add_library(strategy src/sma_strategy.cpp src/sma_queue.cpp)
