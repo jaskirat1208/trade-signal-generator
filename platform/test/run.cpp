@@ -9,7 +9,7 @@ class EventCB1: public jas::platform::FeedEventCallback {
 public:
     int m_count=0;
     jas::platform::price_t last_feed_price;
-    void handleEvent(jas::platform::FeedEventInfo feed_event_info) override {
+    void handleEvent(const jas::platform::FeedEventInfo& feed_event_info) override {
         m_count++;
         last_feed_price = feed_event_info.price;
     }
