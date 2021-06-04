@@ -4,10 +4,16 @@ set(CMAKE_BUILD_TYPE Debug)
 # set the project name
 project(trading-platform)
 
-
 # first we can indicate the documentation build as an option and set it to ON by default
 option(BUILD_DOC "Build documentation" ON)
 
+find_package(GTest)
+if (GTEST_FOUND)
+	message("Gtest Already installed")
+else (GTEST_FOUND)
+	message("Installing gtest")
+	include(externals/gtest.cmake)
+endif (GTEST_FOUND)
 # check if Doxygen is installed
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
