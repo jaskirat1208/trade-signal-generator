@@ -115,7 +115,7 @@ def main():
        price += rand_double(-0.2, 0.2)
        price = round_to_tick_size(price, TICK_SIZE)
        price = TICK_SIZE if price < TICK_SIZE else price
-       current_time += timedelta(milliseconds=60*rand_int(999, 1000))
+       current_time += timedelta(milliseconds=rand_int(1, 1000))
  
    # Write the generated values to a file
    with open(args.file_path, 'w') as file_handler:

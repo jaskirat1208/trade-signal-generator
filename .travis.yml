@@ -25,12 +25,14 @@ addons:
 
 # Build your code e.g. by calling make
 script:
-  - make build_doc
+  - sh build.sh
+  - cd build
+  - make doc_doxygen
 
 deploy:
   provider: pages
   skip_cleanup: true
-  local_dir: bin/docs/html
+  local_dir: build/docs/html
   github_token: $GH_REPO_TOKEN
   on:
     branch: main
