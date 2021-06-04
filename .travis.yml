@@ -1,16 +1,5 @@
-language: cpp
-compiler:
-- gcc
-install:
-# Upgrade GCC
-- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-- sudo apt-get update -qq
-- sudo apt-get install -qq g++-4.9
-- sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
-
-
 # This will run on Travis' 'new' container-based infrastructure
-sudo: false
+sudo: true
 
 # Blacklist
 branches:
@@ -33,6 +22,7 @@ addons:
       - doxygen-latex
       - doxygen-gui
       - graphviz
+      - libgtest-dev
 
 # Build your code e.g. by calling make
 script:
