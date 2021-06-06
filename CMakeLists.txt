@@ -12,7 +12,7 @@ if (GTEST_FOUND)
 	message("Gtest Already installed")
 else (GTEST_FOUND)
 	message("Installing gtest")
-	include(externals/gtest.cmake)
+	# include(externals/gtest.cmake)
 endif (GTEST_FOUND)
 # check if Doxygen is installed
 find_package(Doxygen)
